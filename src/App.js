@@ -36,12 +36,30 @@ function App() {
   }
 
   return (
-    <div>
+    <div id="container">
+      <form>
+        <label htmlFor="title">Titulo</label>
+        <input
+          type="text"
+          id="title"
+          value={newRepo}
+          onChange={(e) => setNewRepo(e.target.value)}
+        />
+
+        <label htmlFor="url">URL</label>
+        <input
+          type="text"
+          id="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+        />
+
+        <button onClick={handleAddRepository}>Adicionar</button>
+      </form>
       <ul data-testid="repository-list">
         {repositories.map((repo) => (
           <li key={repo.id}>
-            {repo.title}
-
+            <span>{repo.title}</span>
             <a style={{ paddingLeft: "10px" }} href={repo.url}>
               url
             </a>
@@ -51,24 +69,6 @@ function App() {
           </li>
         ))}
       </ul>
-      <br />
-      <label htmlFor="title">Titulo</label>
-      <input
-        type="text"
-        id="title"
-        value={newRepo}
-        onChange={(e) => setNewRepo(e.target.value)}
-      />
-      <br />
-      <label htmlFor="url">URL</label>
-      <input
-        type="text"
-        id="url"
-        value={url}
-        onChange={(e) => setUrl(e.target.value)}
-      />
-      <br />
-      <button onClick={handleAddRepository}>Adicionar</button>
     </div>
   );
 }
